@@ -1,0 +1,20 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .nav-home,
+  .nav-cart {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+  }
+  .cart-count {
+    font-weight: bold;
+  }
+  

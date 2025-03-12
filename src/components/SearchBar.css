@@ -1,0 +1,21 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  
+  .search-bar input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .search-result-count {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #666;
+  }
+  
