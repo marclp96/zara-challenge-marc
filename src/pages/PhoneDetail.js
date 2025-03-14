@@ -1,23 +1,23 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { fetchPhoneDetail } from "../services/apiService";
-import { CartContext } from "../context/CartContext";
-import "./PhoneDetail.css";
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { fetchPhoneDetail } from '../services/apiService';
+import { CartContext } from '../context/CartContext';
+import './PhoneDetail.css';
 
 const PhoneDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [phone, setPhone] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [selectedColor, setSelectedColor] = useState("");
-  const [selectedStorage, setSelectedStorage] = useState("");
+  const [error, setError] = useState('');
+  const [selectedColor, setSelectedColor] = useState('');
+  const [selectedStorage, setSelectedStorage] = useState('');
   const [price, setPrice] = useState(0);
   const { addToCart } = useContext(CartContext);
 
   const getFullImageUrl = (url) => {
     if (!url) return null;
-    return url.startsWith("http")
+    return url.startsWith('http')
       ? url
       : `https://prueba-tecnica-api-tienda-moviles.onrender.com${url}`;
   };
@@ -26,7 +26,7 @@ const PhoneDetail = () => {
     const loadPhoneDetail = async () => {
       try {
         const data = await fetchPhoneDetail(id);
-        console.log("Detalle del teléfono:", data);
+
         setPhone(data);
         setPrice(data.basePrice || data.price);
       } catch (err) {
@@ -49,9 +49,9 @@ const PhoneDetail = () => {
 
       let colorAdjustment = 0;
       if (selectedColor) {
-        if (selectedColor === "Obsidiana") colorAdjustment = 10;
-        else if (selectedColor === "Porcelana") colorAdjustment = 20;
-        else if (selectedColor === "Celeste") colorAdjustment = 30;
+        if (selectedColor === 'Obsidiana') colorAdjustment = 10;
+        else if (selectedColor === 'Porcelana') colorAdjustment = 20;
+        else if (selectedColor === 'Celeste') colorAdjustment = 30;
       }
 
       const finalPrice = storageOption
@@ -83,7 +83,7 @@ const PhoneDetail = () => {
       price: price,
     };
     addToCart(newItem);
-    alert("Producto añadido al carrito");
+    alert('Producto añadido al carrito');
   };
 
   const handleSimilarClick = (similarId) => {
@@ -103,8 +103,7 @@ const PhoneDetail = () => {
   } else {
     imageSrc = getFullImageUrl(phone.imageUrl);
   }
-  const finalImageSrc = imageSrc || "https://via.placeholder.com/300";
-  console.log("Image URL final:", finalImageSrc);
+  const finalImageSrc = imageSrc || 'https://via.placeholder.com/300';
 
   return (
     <div>
@@ -131,7 +130,7 @@ const PhoneDetail = () => {
                     <button
                       key={index}
                       className={`storage-btn ${
-                        selectedStorage === option.capacity ? "selected" : ""
+                        selectedStorage === option.capacity ? 'selected' : ''
                       }`}
                       onClick={() => setSelectedStorage(option.capacity)}
                     >
@@ -148,7 +147,7 @@ const PhoneDetail = () => {
                     <div
                       key={index}
                       className={`color-swatch ${
-                        selectedColor === option.name ? "selected" : ""
+                        selectedColor === option.name ? 'selected' : ''
                       }`}
                       style={{ backgroundColor: option.hexCode }}
                       onClick={() => setSelectedColor(option.name)}
@@ -159,7 +158,8 @@ const PhoneDetail = () => {
             </div>
           </div>
 
-          <button className="storage-btn"
+          <button
+            className="storage-btn"
             onClick={handleAddToCart}
             disabled={!selectedColor || !selectedStorage}
           >
@@ -169,7 +169,7 @@ const PhoneDetail = () => {
             <h3>Especificaciones técnicas</h3>
             <ul>
               {phone.specs &&
-              typeof phone.specs === "object" &&
+              typeof phone.specs === 'object' &&
               !Array.isArray(phone.specs) ? (
                 Object.entries(phone.specs).map(([key, value]) => (
                   <li key={key}>
@@ -181,7 +181,9 @@ const PhoneDetail = () => {
               ) : phone.specs ? (
                 <li>{phone.specs}</li>
               ) : (
-                <li>No hay especificaciones disponibles para este dispositiov.</li>
+                <li>
+                  No hay especificaciones disponibles para este dispositiov.
+                </li>
               )}
             </ul>
           </div>
@@ -197,7 +199,7 @@ const PhoneDetail = () => {
                 key={similar.id}
                 className="similar-product-card"
                 onClick={() => handleSimilarClick(similar.id)}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: 'pointer' }}
               >
                 <img
                   src={getFullImageUrl(similar.imageUrl)}
@@ -206,7 +208,7 @@ const PhoneDetail = () => {
                 />
                 <h4 className="similar-product-name">{similar.name}</h4>
                 <p className="similar-product-brand">{similar.brand}</p>
-                <p className="similar-product-price">{similar.price} EUR</p>
+                <p className="similar-product-price">{similar.basePrice} EUR</p>
               </div>
             ))}
           </div>

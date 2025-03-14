@@ -1,11 +1,9 @@
-//credenciales api
-const API_KEY = '87909682e6cd74208f41a6ef39fe4191';
-const BASE_URL = 'https://prueba-tecnica-api-tienda-moviles.onrender.com';
+const API_KEY = process.env.REACT_APP_API_KEY;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export const fetchPhones = async () => {
   try {
     const url = `${BASE_URL}/products?limit=20`;
-    console.log('Requesting:', url);
     const response = await fetch(url, {
       headers: {
         'x-api-key': API_KEY,
@@ -17,7 +15,6 @@ export const fetchPhones = async () => {
       throw new Error('Error al obtener la lista de productos');
     }
     const data = await response.json();
-    console.log('Data recibida:', data);
     return data;
   } catch (error) {
     console.error('fetchPhones error:', error);

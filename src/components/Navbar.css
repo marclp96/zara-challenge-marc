@@ -1,20 +1,21 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    font-family: Helvetica, Arial, sans-serif;
-    background-color: #ffffff;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .nav-home,
-  .nav-cart {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-  }
-  .cart-count {
-    font-weight: bold;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.nav-home,
+.nav-cart {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.cart-count {
+  font-weight: bold;
+  margin-left: 4px;
+}

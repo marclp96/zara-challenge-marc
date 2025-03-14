@@ -5,7 +5,7 @@
   font-family: Helvetica, Arial, sans-serif;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 20px auto;
   max-width: 1200px;
 }
@@ -27,7 +27,7 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 16px;
-  color: #222 ;
+  color: #222;
 }
 
 .phone-detail-brand {
@@ -64,12 +64,12 @@
 .selector label {
   font-size: 1rem;
   margin-bottom: 8px;
-  color: #333 ;
+  color: #333;
 }
 
 .color-options {
   display: flex;
-  gap: 10px ;
+  gap: 10px;
 }
 
 .color-swatch {
@@ -96,7 +96,9 @@
   background-color: #fff;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 .storage-btn.selected,
@@ -105,7 +107,6 @@
   color: #fff;
   border-color: #000;
 }
-
 
 .selector label {
   font-size: 1rem;
@@ -169,16 +170,18 @@
   background: #fff;
   border-radius: 8px;
   padding: 16px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   cursor: pointer;
   font-family: Helvetica, Arial, sans-serif !important;
 }
 
 .similar-product-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .similar-product-image {
