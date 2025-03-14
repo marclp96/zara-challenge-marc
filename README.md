@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# Zara Challenge – Catálogo de Móviles
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es una aplicación web que permite visualizar, buscar y gestionar un catálogo de móviles. 
 
-## Available Scripts
+La aplicación cuenta con tres vistas: Un listado de teléfonos, detalle de los mismos y un carrito de compras.
 
-In the project directory, you can run:
+## Características
 
-### `npm start`
+- **Listado de teléfonos:**  
+  Muestra una cuadrícula con tarjetas que incluyen imagen, nombre, marca y precio base de cada dispositivo.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Buscador en tiempo real:**  
+  Permite filtrar teléfonos por su nombre o marca y muestra el número de resultados encontrados.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Detalle del teléfono:**  
+  Muestra información completa del dispositivo seleccionado. Permite elegir color y almacenamiento con actualización en tiempo real del precio y muestra productos simlares.
 
-### `npm test`
+- **Carrito de compras:**  
+  Permite agregar, eliminar, ver el total del precio y ver el total de productos añadidos.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Notas sobre la arquitectura
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React Context API:** Se usa para gestionar el estado global del carrito de compras.
+- **Rutas y Navegación:** Implementadas con React Router.
+- **API REST:** Se consumen datos mediante funciones definidas en `apiService.js` con autenticación usando la key API y la URL del backend.
+- **Variables de Entorno:** Se utilizan para almacenar datos sensibles 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Stack Tecnológico
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Frontend:** React, CSS.
+- **Backend:** Node 18 
+- **Gestión de Estado:** React Context API.
+- **Enrutamiento:** React Router.
+- **Testing:** Jest y React Testing Library.
+- **Linting y Formateo:** Se usó la extensión Prettier para el formate y cuidado del código.
 
-### `npm run eject`
+## Instalación
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Clonar el repositorio:**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   - `git clone https://github.com/marclp96/zara-challenge-marc.git`
+   - `cd zara-challenge-marc`
+   - `npm install`
+   - Crear un archivo `.env` en la raíz del proyecto y definir las siguientes variables: 
+     - `REACT_APP_API_KEY= <key de la api>.`
+     - `REACT_APP_BASE_URL= <url de la api>.`
+   - Iniciar el servidor con `npm start`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Uso
+- **Listado de teléfonos:** La página principal muestra una cuadrícula con las tarjetas de los teléfonos.
 
-## Learn More
+- **Buscador:** Usar el campo de búsqueda para filtrar los teléfonos y ver el número de resultados en tiempo real.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Vista detalle del teléfonos:** Hacer clic en cualquier tarjeta para ver detalles, cambiar color y almacenamiento, y agregar el producto al carrito.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Carrito:** Accede a la vista del carrito para ver los productos añadidos, eliminar artículos y ver el total.
 
-### Code Splitting
+## Variables de Entorno
+Se utiliza un archivo `.env` para almacenar datos sensibles, como son la key de la API y la URL. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `REACT_APP_API_KEY= <key de la api>.`
+- `REACT_APP_BASE_URL= <url de la api>.`
 
-### Analyzing the Bundle Size
+Se usa el encabezado `x-api-key`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Testing
+Se utilizan Jest y React Testing Library para realizar pruebas unitarias y de integración.
 
-### Making a Progressive Web App
+Para ejecutar los tests y ver la cobertura:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+`npm test -- --coverage`
 
-### Advanced Configuration
+## Despliegue
+Para generar una build optimizada para producción:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+`npm run build`
 
-### Deployment
+Y para servir la carpeta build con un servidor estático:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- `npm install -g serve`
+- `serve -s build`
 
-### `npm run build` fails to minify
+## Notas adicionales
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Modo Desarrollo vs. Producción:**
+- En desarrollo, los assets se sirven sin minimizar para facilitar el debugging.
+- En producción, los assets se concatenan y minimizan para mejorar el rendimiento.
+
+**Linting y Formateo:**
+
+Se utilizó la extensión *Prettier* para VSCode para mantener el código limpio y bien estructurado. 
+
+**Testing:**
+
+He implementado pruebas unitarias para cubrir la funcionalidad principal de la aplicación. Sin embargo, reconozco que aún hay algunos tests que no he podido corregir por completo debido a limitaciones de tiempo. Esto no afecta la funcionalidad general de la aplicación, y tengo previsto continuar trabajando en la optimización y cobertura de pruebas en futuros desarrollos.
+
+Si tienen alguna duda o encuentran algún inconveniente, estaré encantado de ayudarles. Por favor, no duden en contactarme para cualquier consulta o aclaración.
